@@ -1,0 +1,495 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "hub de leitura atividade api",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "{{baseUrl}}books"
+    },
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Listar livros",
+        "responses": {}
+      },
+      "post": {
+        "summary": "Adicionar um novo livro sem token",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{bearer_token_0w9a}}"
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "isbn": {
+                    "type": "string"
+                  },
+                  "editor": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "publication_year": {
+                    "type": "integer"
+                  },
+                  "pages": {
+                    "type": "integer"
+                  },
+                  "format": {
+                    "type": "string"
+                  },
+                  "total_copies": {
+                    "type": "integer"
+                  },
+                  "available_copies": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "title": "O Cortiço",
+                "author": "Aluísio Azevedo",
+                "description": "Romance naturalista que retrata a vida em um cortiço",
+                "category": "Literatura Brasileira",
+                "isbn": "978-85-260-1320-6",
+                "editor": "Editora Ática",
+                "language": "Português",
+                "publication_year": 1890,
+                "pages": 312,
+                "format": "Físico",
+                "total_copies": 4,
+                "available_copies": 4
+              }
+            }
+          }
+        }
+      }
+    },
+    "/20": {
+      "get": {
+        "summary": "Listar livro com ID",
+        "responses": {}
+      }
+    },
+    "/121": {
+      "get": {
+        "summary": "Listar livros com ID negativa2",
+        "responses": {}
+      }
+    },
+    "/149": {
+      "get": {
+        "summary": "Listar livros com ID negativa",
+        "responses": {}
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Login com ADM",
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "email": "admin@biblioteca.com",
+                "password": "admin123"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/books": {
+      "post": {
+        "summary": "Adicionar um livro invalido",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              },
+              "example": "{\n  \"title\": \n  \"author\": \n  \"description\": \n  \"category\": \"Literatura Brasileira\",\n  \"isbn\": \"978-85-260-1320-6\",\n  \"editor\": \"Editora Ática\",\n  \"language\": \"Português\",\n  \"publication_year\": 1890,\n  \"pages\": 312,\n  \"format\": \"Físico\",\n  \"total_copies\": 4,\n  \"available_copies\": 4\n}"
+            }
+          }
+        }
+      }
+    },
+    "/api/books/20": {
+      "put": {
+        "summary": "Atualizar Livros",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "editor": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "publication_year": {
+                    "type": "integer"
+                  },
+                  "pages": {
+                    "type": "integer"
+                  },
+                  "format": {
+                    "type": "string"
+                  },
+                  "total_copies": {
+                    "type": "integer"
+                  },
+                  "available_copies": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "title": "Nome livro atualizado",
+                "author": "Autor Atualizado",
+                "description": "Descrição atualizada do livro",
+                "category": "Categoria atualizada",
+                "editor": "Editora Atualizada",
+                "language": "Português",
+                "publication_year": 2000,
+                "pages": 300,
+                "format": "Físico",
+                "total_copies": 10,
+                "available_copies": 5
+              }
+            }
+          }
+        }
+      }
+    },
+    "/14": {
+      "put": {
+        "summary": "Atualizar Livros",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "editor": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "publication_year": {
+                    "type": "integer"
+                  },
+                  "pages": {
+                    "type": "integer"
+                  },
+                  "format": {
+                    "type": "string"
+                  },
+                  "total_copies": {
+                    "type": "integer"
+                  },
+                  "available_copies": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "title": "Nome livro atualizado",
+                "author": "Autor Atualizado",
+                "description": "Descrição atualizada do livro",
+                "category": "Categoria atualizada",
+                "editor": "Editora Atualizada",
+                "language": "Português",
+                "publication_year": 2000,
+                "pages": 300,
+                "format": "Físico",
+                "total_copies": 10,
+                "available_copies": 5
+              }
+            }
+          }
+        }
+      }
+    },
+    "/3": {
+      "put": {
+        "summary": "Atualizar livro com dados invalidos",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "editor": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "publication_year": {
+                    "type": "integer"
+                  },
+                  "pages": {
+                    "type": "integer"
+                  },
+                  "format": {
+                    "type": "string"
+                  },
+                  "total_copies": {
+                    "type": "integer"
+                  },
+                  "available_copies": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "title": "",
+                "author": "Autor Atualizado",
+                "description": "Descrição atualizada do livro",
+                "category": "Categoria atualizada",
+                "editor": "Editora Atualizada",
+                "language": "Português",
+                "publication_year": 2000,
+                "pages": 300,
+                "format": "Físico",
+                "total_copies": 10,
+                "available_copies": 5
+              }
+            }
+          }
+        }
+      }
+    },
+    "/44": {
+      "put": {
+        "summary": "Atualizar livro inexistente",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {},
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "editor": {
+                    "type": "string"
+                  },
+                  "language": {
+                    "type": "string"
+                  },
+                  "publication_year": {
+                    "type": "integer"
+                  },
+                  "pages": {
+                    "type": "integer"
+                  },
+                  "format": {
+                    "type": "string"
+                  },
+                  "total_copies": {
+                    "type": "integer"
+                  },
+                  "available_copies": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "example": {
+                "title": "Nome livro atualizado",
+                "author": "Autor Atualizado",
+                "description": "Descrição atualizada do livro",
+                "category": "Categoria atualizada",
+                "editor": "Editora Atualizada",
+                "language": "Português",
+                "publication_year": 2000,
+                "pages": 300,
+                "format": "Físico",
+                "total_copies": 10,
+                "available_copies": 5
+              }
+            }
+          }
+        }
+      }
+    },
+    "/2": {
+      "delete": {
+        "summary": "Deletar Livro",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/5": {
+      "delete": {
+        "summary": "Deletar livro inexistente",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{token}}"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  }
+}
